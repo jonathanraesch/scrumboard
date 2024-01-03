@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if theme == 'light' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'userstories/colors_light.css' %}">
+    {% endif %}
+    {% if theme == 'dark' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'userstories/colors_dark.css' %}">
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{% static 'userstories/main.css' %}">
+    <title>Scrum Board</title>
+</head>
+<body>
+<header class="main-header">
+    <a href="{% url 'userstories:index' %}">
+        <h1 class="website-title">Scrum Board</h1>
+    </a>
+    <a href="{% url 'userstories:index'%}?theme=toggle">
+        <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 12.7 12.7"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <defs id="defs2" />
+            <g id="layer1">
+            <path
+            id="path1"
+            style="fill:#FFFFFF;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.264583"
+            d="M 4.1072428,1.8355469 A 5.0499358,5.0499358 0 0 0 1.300179,6.35 5.0499358,5.0499358 0 0 0 6.35,11.399821 5.0499358,5.0499358 0 0 0 11.151774,7.8884074 4.6626945,4.6626945 0 0 1 7.8005575,9.325529 4.6626945,4.6626945 0 0 1 3.137793,4.6627645 4.6626945,4.6626945 0 0 1 4.1072428,1.8355469 Z" />
+            </g>
+        </svg>
+    </a>
+</header>
+<main>
+    <div class="content-box">
+        <h2 class="page-title">User Stories</h2>
+        
+        <ul class="stories-list">
+            <li class="user-story">
+                <form class="new-story-form" action="{% url 'userstories:index' %}" method="post">
+                    {% csrf_token %}
+                    {{ new_story_form.as_p }}
+                    <input type="submit" class="new-story-submit" value="Add User Story">
+                </form>
+            </li>
+            {% for story in story_list %}
+                <li class="user-story">
+                    <h3 class="story-header">{{ story.title }}</h3>
+                    <p class="story-body">{{ story.story }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</main>
+</body>
+</html>
