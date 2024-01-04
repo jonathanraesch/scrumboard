@@ -15,9 +15,9 @@ class HttpResponseTemporaryRedirect(HttpResponseRedirect):
 
 
 def index(request):
-    new_story_form = UserStoryForm()
+    new_story_form = UserStoryForm(request.path)
     if request.method == 'POST':
-        new_story_form = UserStoryForm(request.POST)
+        new_story_form = UserStoryForm(request.path, request.POST)
         if new_story_form.is_valid():
             current_user = request.user
             if current_user.is_anonymous:
@@ -27,7 +27,7 @@ def index(request):
                 story=new_story_form.cleaned_data.get('story'),
                 author=current_user
             )
-            return HttpResponseSeeOther(reverse('userstories:index'))
+            return HttpResponseSeeOther(new_story_form.cleaned_data.get('next_path'))
 
     elif request.method == 'GET':
         theme_param = request.GET.get('theme')
