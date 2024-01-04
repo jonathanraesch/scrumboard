@@ -1,7 +1,17 @@
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
 
 from userstories.forms import UserStoryForm
 from userstories.models import UserStory
+
+
+class HttpResponseSeeOther(HttpResponseRedirect):
+    status_code = 303
+
+
+class HttpResponseTemporaryRedirect(HttpResponseRedirect):
+    status_code = 307
 
 
 def index(request):
@@ -17,7 +27,7 @@ def index(request):
                 story=new_story_form.cleaned_data.get('story'),
                 author=current_user
             )
-            return redirect('userstories:index')
+            return HttpResponseSeeOther(reverse('userstories:index'))
 
     elif request.method == 'GET':
         theme_param = request.GET.get('theme')
@@ -44,4 +54,4 @@ def index(request):
 
 
 def index_redirect(request):
-    return redirect('userstories:index')
+    return HttpResponseTemporaryRedirect(reverse('userstories:index'))
