@@ -25,7 +25,9 @@
         <ul class="stories-list">
             {% for story in story_list %}
                 <li class="user-story">
-                    <h3 class="story-header">{{ story.title }}</h3>
+                    <a href="{% url 'userstories:detail' story.id %}">
+                        <h3 class="story-header">{{ story.title }}</h3>
+                    </a>
                     <p class="story-body">{{ story.story }}</p>
                     <div class="fade-out-bottom-parent"><div class="fade-out-bottom"></div></div>
                 </li>

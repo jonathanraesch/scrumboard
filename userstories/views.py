@@ -39,3 +39,11 @@ def index(request):
 
 def index_redirect(request):
     return HttpResponseTemporaryRedirect(reverse('userstories:index'))
+
+
+def detail(request, story_id):
+    story = UserStory.objects.get(id=story_id)
+    context = {
+        'story': story,
+    }
+    return render(request, 'userstories/detail.html', context=context)
