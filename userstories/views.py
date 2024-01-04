@@ -29,26 +29,10 @@ def index(request):
             )
             return HttpResponseSeeOther(new_story_form.cleaned_data.get('next_path'))
 
-    elif request.method == 'GET':
-        theme_param = request.GET.get('theme')
-        if theme_param == 'dark':
-            request.session['theme'] = 'dark'
-        elif theme_param == 'light':
-            request.session['theme'] = 'light'
-        elif theme_param == 'toggle':
-            current_theme = request.session.get('theme')
-            if current_theme == 'light':
-                request.session['theme'] = 'dark'
-            else:
-                request.session['theme'] = 'light'
-
-    if not request.session.get('theme'):
-        request.session['theme'] = 'dark'
     story_list = UserStory.objects.order_by('-pub_date')
     context = {
         'story_list': story_list,
         'new_story_form': new_story_form,
-        'theme': request.session['theme'],
     }
     return render(request, 'userstories/index.html', context=context)
 
