@@ -33,12 +33,11 @@ body {
 }
 
 .content-box {
-    max-width: 950px;
-    width: calc(100% - 16px);
+    width: min(calc(100% - 16px), 95%);
+    @media (min-width: 1000px) {
+        width: 90%;
+    }
     margin: 0 auto;
-    /* @media (min-width: 900px) {
-        max-width: 950px;
-    } */
 }
 
 .page-title {
@@ -49,12 +48,35 @@ body {
 .stories-list {
     padding: 0;
     list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    column-gap: 1%;
+}
+
+.stories-list::after {
+    content: "";
+    flex-grow: 5;
 }
 
 .user-story {
     padding: 1em;
 
     margin-bottom: 1em;
+
+    width: 100%;
+    @media (min-width: 1000px) {
+        width: 49.5%;
+    }
+    @media (min-width: 1800px) {
+        width: 32.666%;
+    }
+    @media (min-width: 2400px) {
+        width: 24.25%;
+    }
+
+    display: block;
+    position: relative;
 
     border: 2px solid;
     border-radius: 0.5rem;
@@ -65,11 +87,40 @@ body {
     font-size: 1.5em;
     font-weight: normal;
     margin: 0 0 1em;
-    overflow-wrap: break-word;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    line-height: 1.2em;
+}
+.story-header::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 20%;
+  height: 1.2em;
+  background: linear-gradient(to right, transparent, var(--color-bg) calc(100% - 1em));
 }
 
 .story-body {
     margin: 0;
+
+    line-height: 1.2em;
+    height: 4.8em;
+    overflow: hidden;
+}
+
+.fade-out-bottom-parent {
+    position: relative;
+}
+
+.fade-out-bottom {
+    z-index: 99;
+    position: absolute;
+    bottom: 0;
+    height: 1.2em;
+    width: 100%;
+    background: linear-gradient(transparent, var(--color-bg));
 }
 
 .new-story-title {
@@ -99,6 +150,20 @@ body {
     border: 1px solid;
     border-radius: 0.2rem;
     border-color: var(--color-lines);
+}
+
+.new-story-form {
+    margin: 0 auto;
+    width: 100%;
+    @media (min-width: 1000px) {
+        width: 49.5%;
+    }
+    @media (min-width: 1800px) {
+        width: 32.666%;
+    }
+    @media (min-width: 2400px) {
+        width: 24.25%;
+    }
 }
 
 .new-story-form > p {

@@ -17,19 +17,17 @@
 <main>
     <div class="content-box">
         <h2 class="page-title">User Stories</h2>
-        
+        <form class="new-story-form" action="{% url 'userstories:index' %}" method="post">
+            {% csrf_token %}
+            {{ new_story_form.as_p }}
+            <input type="submit" class="new-story-submit" value="Add User Story">
+        </form>
         <ul class="stories-list">
-            <li class="user-story">
-                <form class="new-story-form" action="{% url 'userstories:index' %}" method="post">
-                    {% csrf_token %}
-                    {{ new_story_form.as_p }}
-                    <input type="submit" class="new-story-submit" value="Add User Story">
-                </form>
-            </li>
             {% for story in story_list %}
                 <li class="user-story">
                     <h3 class="story-header">{{ story.title }}</h3>
                     <p class="story-body">{{ story.story }}</p>
+                    <div class="fade-out-bottom-parent"><div class="fade-out-bottom"></div></div>
                 </li>
             {% endfor %}
         </ul>
