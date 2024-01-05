@@ -47,3 +47,9 @@ def detail(request, story_id):
         'story': story,
     }
     return render(request, 'userstories/detail.html', context=context)
+
+
+def delete_story(request, story_id):
+    story = UserStory.objects.get(id=story_id)
+    story.delete()
+    return HttpResponseSeeOther(reverse('userstories:index'))

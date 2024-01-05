@@ -21,6 +21,10 @@
             <h3 class="story-header">{{ story.title }}</h3>
             <p class="story-body">{{ story.story }}</p>
         </div>
+        <form action="{% url 'userstories:delete_story' story.id %}" method="post">
+            {% csrf_token %}
+            <input class="delete-story-submit" type="submit" value="Delete Story">
+        </form>
     </div>
 </main>
 </body>

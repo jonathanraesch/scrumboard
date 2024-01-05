@@ -76,3 +76,18 @@ body {
 .story-body {
     margin: 0;
 }
+
+.delete-story-submit {
+    display: block;
+    margin: 1em auto;
+
+    background-color: var(--color-red-delete);
+    color: var(--color-text);
+    font-size: 1em;
+    padding: 0.3em 0.5em;
+    border: 1px solid;
+    border-radius: 0.2rem;
+    border-color: var(--color-red-delete);
+
+    cursor: pointer;
+}
