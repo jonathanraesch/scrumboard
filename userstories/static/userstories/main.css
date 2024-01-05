@@ -152,13 +152,15 @@ body {
 }
 
 .new-story-submit {
-    background-color: var(--color-bg);
+    background-color: var(--color-green-add);
     color: var(--color-text);
     font-size: 1em;
     padding: 0.3em 0.5em;
     border: 1px solid;
     border-radius: 0.2rem;
-    border-color: var(--color-lines);
+    border-color: var(--color-green-add);
+
+    cursor: pointer;
 }
 
 .new-story-form {
