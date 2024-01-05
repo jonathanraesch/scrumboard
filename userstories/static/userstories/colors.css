@@ -9,6 +9,8 @@
         --color-green-add: #3db600;
         --color-red-delete: red;
         --color-button-border: var(--color-lines);
+
+        color-scheme: light;
     }
 }
 
@@ -21,5 +23,7 @@
         --color-lines: #8b8b8b;
         --color-green-add: #3db600;
         --color-red-delete: red;
+
+        color-scheme: dark;
     }
 }
