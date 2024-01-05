@@ -87,7 +87,7 @@ body {
     padding: 0.3em 0.5em;
     border: 1px solid;
     border-radius: 0.2rem;
-    border-color: var(--color-red-delete);
+    border-color: var(--color-button-border, var(--color-red-delete));
 
     cursor: pointer;
 }
