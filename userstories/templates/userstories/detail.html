@@ -1,31 +1,16 @@
+{% extends 'userstories/main.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'userstories/colors.css' %}">
+{% block head %}
     <link rel="stylesheet" type="text/css" href="{% static 'userstories/detail.css' %}">
-    <title>Scrum Board</title>
-</head>
-<body>
-<header class="main-header">
-    <a href="{% url 'userstories:index' %}">
-        <h1 class="website-title">Scrum Board</h1>
-    </a>
-</header>
-<main>
-    <div class="content-box">
-        <h2 class="page-title">Story Detail</h2>
-        <div class="story-box">
-            <h3 class="story-header">{{ story.title }}</h3>
-            <p class="story-body">{{ story.story }}</p>
-        </div>
-        <form action="{% url 'userstories:delete_story' story.id %}" method="post">
-            {% csrf_token %}
-            <input class="delete-story-submit" type="submit" value="Delete Story">
-        </form>
+{% endblock %}
+{% block page-title %}Story Detail{% endblock %}
+{% block content %}
+    <div class="story-box">
+        <h3 class="story-header">{{ story.title }}</h3>
+        <p class="story-body">{{ story.story }}</p>
     </div>
-</main>
-</body>
-</html>
+    <form action="{% url 'userstories:delete_story' story.id %}" method="post">
+        {% csrf_token %}
+        <input class="delete-story-submit" type="submit" value="Delete Story">
+    </form>
+{% endblock %}

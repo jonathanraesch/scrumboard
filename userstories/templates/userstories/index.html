@@ -1,39 +1,24 @@
+{% extends 'userstories/main.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'userstories/colors.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'userstories/main.css' %}">
-    <title>Scrum Board</title>
-</head>
-<body>
-<header class="main-header">
-    <a href="{% url 'userstories:index' %}">
-        <h1 class="website-title">Scrum Board</h1>
-    </a>
-</header>
-<main>
-    <div class="content-box">
-        <h2 class="page-title">User Stories</h2>
-        <form class="new-story-form" action="{% url 'userstories:index' %}" method="post">
-            {% csrf_token %}
-            {{ new_story_form.as_p }}
-            <input type="submit" class="new-story-submit" value="Add User Story">
-        </form>
-        <ul class="stories-list">
-            {% for story in story_list %}
-                <li class="user-story">
-                    <a  class="user-story-link" href="{% url 'userstories:detail' story.id %}">
-                        <h3 class="story-header">{{ story.title }}</h3>
-                        <p class="story-body">{{ story.story }}</p>
-                        <div class="fade-out-bottom-parent"><div class="fade-out-bottom"></div></div>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-</main>
-</body>
-</html>
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'userstories/index.css' %}">
+{% endblock %}
+{% block page-title %}User Stories{% endblock %}
+{% block content %}
+    <form class="new-story-form" action="{% url 'userstories:index' %}" method="post">
+        {% csrf_token %}
+        {{ new_story_form.as_p }}
+        <input type="submit" class="new-story-submit" value="Add User Story">
+    </form>
+    <ul class="stories-list">
+        {% for story in story_list %}
+            <li class="user-story">
+                <a  class="user-story-link" href="{% url 'userstories:detail' story.id %}">
+                    <h3 class="story-header">{{ story.title }}</h3>
+                    <p class="story-body">{{ story.story }}</p>
+                    <div class="fade-out-bottom-parent"><div class="fade-out-bottom"></div></div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
