@@ -16,13 +16,13 @@
     margin-bottom: 1em;
 
     width: 100%;
-    @media (min-width: 1000px) {
+    @media (min-width: 63rem) {
         width: 49.5%;
     }
-    @media (min-width: 1800px) {
+    @media (min-width: 113rem) {
         width: 32.666%;
     }
-    @media (min-width: 2400px) {
+    @media (min-width: 150rem) {
         width: 24.25%;
     }
 
@@ -119,13 +119,13 @@
 .new-story-form {
     margin: 0 auto;
     width: 100%;
-    @media (min-width: 1000px) {
+    @media (min-width: 63rem) {
         width: 49.5%;
     }
-    @media (min-width: 1800px) {
+    @media (min-width: 113rem) {
         width: 32.666%;
     }
-    @media (min-width: 2400px) {
+    @media (min-width: 150rem) {
         width: 24.25%;
     }
 }

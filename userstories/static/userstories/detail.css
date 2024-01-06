@@ -1,16 +1,16 @@
 .story-box {
     margin: 0 auto;
     width: 100%;
-    @media (min-width: 700px) {
+    @media (min-width: 44rem) {
         width: 80%;
     }
-    @media (min-width: 1300px) {
+    @media (min-width: 81rem) {
         width: 60%;
     }
-    @media (min-width: 1800px) {
+    @media (min-width: 113rem) {
         width: 50%;
     }
-    @media (min-width: 2400px) {
+    @media (min-width: 150rem) {
         width: 40%;
     }
 
