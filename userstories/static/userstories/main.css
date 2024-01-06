@@ -10,6 +10,11 @@ body {
 .main-header {
     color: var(--color-header-text);
     background: var(--color-header-bg);
+    background: linear-gradient(
+            0deg,
+            hsl(var(--color-header-bg-hue), var(--color-header-bg-saturation), calc(var(--color-header-bg-lightness) - 7%)),
+            hsl(var(--color-header-bg-hue), var(--color-header-bg-saturation), calc(var(--color-header-bg-lightness) + 7%))
+    );
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;

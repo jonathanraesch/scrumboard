@@ -1,5 +1,8 @@
 :root {
-    --color-header-bg: #00ABB1;
+    --color-header-bg-hue: 182.03;
+    --color-header-bg-saturation: 100%;
+    --color-header-bg-lightness: 33.0%;
+    --color-header-bg: hsl(var(--color-header-bg-hue), var(--color-header-bg-saturation), var(--color-header-bg-lightness));
     --color-header-text: white;
     --color-green-add: #3db600;
     --color-red-delete: red;
